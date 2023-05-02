@@ -14,12 +14,12 @@ The Figma design document is linked [here](https://www.figma.com/file/zIZxhjtu7p
 ## How It Works
 
 1. The app consists of three parts:
-   a. Static title (“Events Explorer”)
-   b. In-app browser view
-   c. Status text (“Loading…”)
+   1. Static title (“Events Explorer”)
+   2. In-app browser view
+   3. Status text (“Loading…”)
 2. Once the app is loaded,
-   a. The in-app browser view starts to load the webview (“https://www.sfstation.com/calendar”)
-   b. The status text shows “Loading…”
+   1. The in-app browser view starts to load the webview (“https://www.sfstation.com/calendar”)
+   2. The status text shows “Loading…”
 3. Once the website is loaded, the in-app browser view should show the webview as it is.
 4. The app tries to read the DOM tree and find the first event name.
 5. Once it finds it out, the status text should update to the name.
