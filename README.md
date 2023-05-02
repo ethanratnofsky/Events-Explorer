@@ -7,7 +7,8 @@
 
 ## Design
 
-<img src="/events-explorer-desgin.png" alt="Events Explorer Design" />
+<img src="/events-explorer-design.png" alt="Events Explorer Design" />
+
 The Figma design document is linked [here](https://www.figma.com/file/zIZxhjtu7pbzavfpaohiT7/Events-Explorer?node-id=0%3A1&t=Lj8s59uK3OTjf9fg-1).
 
 ## How It Works
