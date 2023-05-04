@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = ContentViewModel() // View manager
+    
     var body: some View {
         VStack {
             // Static title
@@ -17,11 +19,15 @@ struct ContentView: View {
                 .padding(.bottom, 30)
             
             // In-app browser view
-            Color(red: 217/255, green: 217/255, blue: 217/255)
-                .padding(.horizontal, 30)
+            if (viewModel.isLoading) {
+                Color(red: 217/255, green: 217/255, blue: 217/255)
+                    .padding(.horizontal, 30)
+            } else {
+                viewModel.webView
+            }
 
             // Status text
-            Text("Loading...")
+            Text(viewModel.statusText)
                 .font(.title2)
                 .padding(.top, 30)
                 .padding(.bottom, 10)
