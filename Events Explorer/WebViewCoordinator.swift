@@ -28,9 +28,9 @@ extension WebView {
             func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
                 viewModel.isLoading = false
                 
-                // Scrape the first event if the web view loaded calendar of events
+                // Scrape the first event name if the web view loaded calendar of events
                 if (webView.url == URL(string: viewModel.url)) {
-                    viewModel.scrapeFirstEvent(webView: webView)
+                    viewModel.scrapeFirstEventName()
                 }
             }
     

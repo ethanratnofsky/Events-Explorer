@@ -24,12 +24,15 @@ struct WebView: UIViewRepresentable {
         webView.navigationDelegate = context.coordinator
         webView.load(request)
         
+        // Initialize webView in view model (necessary for evaluating JS)
+        viewModel.webView = webView
+        
         return webView
     }
     
     // UI Updater
     func updateUIView(_ webView: WKWebView, context: Context) {
-        // TODO: Should I do something here? maybe detect if on homepage, and re-scrape first event?
+        // TODO: Anything necessary here?
     }
     
     // Lifecycle Manager Constructor?

@@ -37,7 +37,7 @@ struct ContentView: View {
                 .padding(.top, 30)
                 .padding(.bottom, 10)
                 .onTapGesture {
-                    print("TODO: Navigate to " + viewModel.url + viewModel.eventUrl!)
+                    viewModel.navigateToEvent()
                 }
         }
         .padding()
