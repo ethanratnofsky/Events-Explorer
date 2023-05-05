@@ -19,11 +19,15 @@ struct ContentView: View {
                 .padding(.bottom, 30)
             
             // In-app browser view
-            if (viewModel.isLoading) {
-                Color(red: 217/255, green: 217/255, blue: 217/255)
+            ZStack {
+                WebView(url: viewModel.url, viewModel: viewModel)
                     .padding(.horizontal, 30)
-            } else {
-                viewModel.webView
+                
+                // Load gray frame on top if web view is loading
+                if (viewModel.isLoading) {
+                    Color(red: 217/255, green: 217/255, blue: 217/255)
+                        .padding(.horizontal, 30)
+                }
             }
 
             // Status text

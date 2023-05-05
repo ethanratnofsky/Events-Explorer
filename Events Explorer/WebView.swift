@@ -11,59 +11,30 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     // Parameter(s)
-    let url: URL
+    let url: String
     
     // Define access to view data manager
     @ObservedObject var viewModel: ContentViewModel
     
-    // UI Constructor
+    // UI Constructor: creates WKWebView and loads request
     func makeUIView(context: Context) -> WKWebView {
+        let url = URL(string: self.url)!
+        let request = URLRequest(url: url)
         let webView = WKWebView()
         webView.navigationDelegate = context.coordinator
-        webView.load(URLRequest(url: url))
+        webView.load(request)
+        
         return webView
     }
     
     // UI Updater
     func updateUIView(_ webView: WKWebView, context: Context) {
-        webView.load(URLRequest(url: url))
+        // TODO: Should I do something here? maybe detect if on homepage, and re-scrape first event?
     }
-    
-    // FIXME: Don't think this lifecycle management is working properly? isLoading is never changing...
     
     // Lifecycle Manager Constructor?
     func makeCoordinator() -> Coordinator {
-        Coordinator(viewModel: viewModel)
-    }
-
-    // Define Lifecycle Manager?
-    class Coordinator: NSObject, WKNavigationDelegate {
-        // Define access to view data manager
-        @ObservedObject var viewModel: ContentViewModel
-        
-        // Constructor
-        init(viewModel: ContentViewModel) {
-            self.viewModel = viewModel
-        }
-
-        // Function called upon initial navigation
-        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-            viewModel.isLoading = true
-            viewModel.statusText = "Loading..."
-        }
-
-        // Function called upon navigation finish
-        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            viewModel.isLoading = false
-            // TODO: scrape name of first event
-            viewModel.statusText = "LOADED!"
-        }
-
-        // Function called upon navigation failure
-        func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-            viewModel.isLoading = false
-            viewModel.statusText = "Error: \(error.localizedDescription)"
-        }
+        Coordinator(viewModel)
     }
 }
 
