@@ -33,6 +33,7 @@ struct ContentView: View {
             // Status text
             Text(viewModel.statusText)
                 .font(.title2)
+                .multilineTextAlignment(.center)
                 .padding(.top, 30)
                 .padding(.bottom, 10)
         }

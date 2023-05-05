@@ -28,8 +28,7 @@ extension WebView {
             // Function called upon navigation finish
             func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
                 viewModel.isLoading = false
-                // TODO: scrape name of first event
-                viewModel.statusText = "LOADED!"
+                viewModel.scrapeFirstEventName(webView: webView)
             }
     
             // Function called upon navigation failure
