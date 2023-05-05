@@ -19,16 +19,19 @@ extension WebView {
                 self.viewModel = viewModel
             }
     
-            // Function called upon initial navigation
+            // Function called before navigation
             func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-                viewModel.isLoading = true
-                viewModel.statusText = "Loading..."
+                // TODO: Anything necessary here?
             }
     
             // Function called upon navigation finish
             func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
                 viewModel.isLoading = false
-                viewModel.scrapeFirstEventName(webView: webView)
+                
+                // Scrape the first event if the web view loaded calendar of events
+                if (webView.url == URL(string: viewModel.url)) {
+                    viewModel.scrapeFirstEvent(webView: webView)
+                }
             }
     
             // Function called upon navigation failure
