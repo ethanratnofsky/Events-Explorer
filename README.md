@@ -14,12 +14,12 @@ The Figma design document is linked [here](https://www.figma.com/file/zIZxhjtu7p
 ## How It Works
 
 1. The app consists of three parts:
-   1. Static title (“Events Explorer”)
+   1. Static title ("Events Explorer")
    2. In-app browser view
-   3. Status text (“Loading…”)
+   3. Status text ("Loading…")
 2. Once the app is loaded,
-   1. The in-app browser view starts to load the webview (“https://www.sfstation.com/calendar”)
-   2. The status text shows “Loading…”
+   1. The in-app browser view starts to load the webview ("https://www.sfstation.com/calendar")
+   2. The status text shows "Loading…"
 3. Once the website is loaded, the in-app browser view should show the webview as it is.
 4. The app tries to read the DOM tree and find the first event name.
 5. Once it finds it out, the status text should update to the name.
@@ -29,12 +29,15 @@ The Figma design document is linked [here](https://www.figma.com/file/zIZxhjtu7p
 
 1. The app should be made using SwiftUI
 2. ViewModel (in SwiftUI MVVM pattern) is in charge of understanding the DOM tree and finding the first event name.
-3. The view layer just refers to this ViewModel layer using @State/@Published.
+3. The view layer just refers to this ViewModel layer using `@State`/`@Published`.
 
 ## Deliverables
 
 1. Demo video
-2. App project files
+
+https://user-images.githubusercontent.com/43038541/236581472-0203fbd9-7efd-403e-9ee6-3b3703a99cdb.mov
+
+2. [App project files](https://github.com/ethanratnofsky/Events-Explorer)
 
 ## Useful Information
 
