@@ -37,7 +37,7 @@ struct ContentView: View {
                 .padding(.top, 30)
                 .padding(.bottom, 10)
                 .onTapGesture {
-                    viewModel.navigateToEvent()
+                    viewModel.isEventClicked = true
                 }
         }
         .padding()

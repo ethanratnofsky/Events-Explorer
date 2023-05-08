@@ -25,15 +25,21 @@ struct WebView: UIViewRepresentable {
         webView.load(request)
         
         // Initialize webView in view model (necessary for evaluating JS)
-        viewModel.webView = webView
+//        viewModel.webView = webView
         
         return webView
     }
     
     // UI Updater
     func updateUIView(_ webView: WKWebView, context: Context) {
-        // TODO: Anything necessary here?
+        // Scrape event link and click it
+        if (viewModel.isEventClicked) {
+            let clickEvent = "document.querySelector('.event-wrapper .ev_in a').click()"
+            webView.evaluateJavaScript(clickEvent)
+        }
     }
+    
+    
     
     // Lifecycle Manager Constructor?
     func makeCoordinator() -> Coordinator {
